@@ -14,13 +14,15 @@ function Home() {
   const [TrendingmovieList, setTrendingMovieList] = useState([]);
   const [PopularmovieList, setPopularMovieList] = useState([]);
   const [TopRatedmovieList, setTopRatedMovieList] = useState([]);
-
+  const type1="movie"
+  const type2="tv"
   useEffect(() => {
 
     const fetchMovies = async () => {
-      const trendingData = await getTrendingMovies();
-      const popularData = await getPopularMovies();
-      const topRatedData = await getTopRatedMovies();
+      
+      const trendingData = await getTrendingMovies(type2);
+      const popularData = [...await getPopularMovies(type1), ...await getPopularMovies(type2)].sort(() => Math.random() - 0.5).slice(0, 10);
+      const topRatedData =[...await getTopRatedMovies(type1), ...await getTopRatedMovies(type2)].sort(() => Math.random() - 0.5) ;
       
       
 
@@ -39,20 +41,21 @@ function Home() {
             <Navbar/>
             <div className='pl-20   w-[100%] '>
               
-                <SlideBanner movies={TopRatedmovieList}/>
+                <SlideBanner movies={TopRatedmovieList} type={type1}/>
                 <br />
                  <h1 className='text-white text-4xl'>
                     Top 10
                 </h1>
                 <br />
-                <MovieGallery movies={PopularmovieList} />
+                <MovieGallery movies={PopularmovieList} type={type1} />
                 <br />
                  <h1 className='text-white text-4xl'>
-                    New Releases
+                    Tv series
                 </h1>
                 <br />
-                <MovieGallery movies={TrendingmovieList} />
+                <MovieGallery movies={TrendingmovieList} type={type2}/>
                 <br />
+               
                
             </div>
         </div>
