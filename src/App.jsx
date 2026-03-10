@@ -5,15 +5,19 @@ import "./App.css"
 import Movies from "./pages/Movies/Movies";
 import TvSeries from "./pages/Tv series/TvSeries";
 import SearchBar from "./components/SearchBar/SearchBar";
+import MainLayout from "./layout/mainlayout/MainLayout";
 
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/movie" element={<Movies/>} />
-        <Route path="/Tvseries" element={<TvSeries/>} />
-        <Route path="/search" element={<SearchBar/>} />
+      <Routes >
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Home/>} />
+          <Route path="/movie" element={<Movies/>} />
+          <Route path="/Tvseries" element={<TvSeries/>} />
+          <Route path="/search" element={<SearchBar/>} />
+        </Route>
+        
        
       </Routes>
     </>

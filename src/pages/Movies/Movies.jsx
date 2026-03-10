@@ -31,27 +31,28 @@ function Movies() {
       }, []);
     
   return (
-    <div className='flex '>
-        <Navbar/>
-        <div className='pl-20   w-[100%] '>
-              
-                <SlideBanner movies={TopRatedmovieList} type={type}/>
-                <br />
-                 <h1 className='text-white text-4xl'>
-                    Top 10
-                </h1>
-                <br />
-                <MovieGallery movies={PopularmovieList} type={type} />
-                <br />
-                 <h1 className='text-white text-4xl'>
-                    Trending
-                </h1>
-                <br />
-                <MovieGallery movies={TrendingmovieList} type={type}/>
-                <br />
-               
-            </div>
+ 
+    <div className='w-[100%] '>
+          
+      <SlideBanner movies={TopRatedmovieList} type={type}/>
+      <br />
+        <h1 className='text-white text-4xl'>
+          Top 10
+      </h1>
+      <br />
+      <MovieGallery movies={PopularmovieList} type={type} />
+      <br />
+        <h1 className='text-white text-4xl'>
+          Trending
+      </h1>
+      <br />
+      <MovieGallery movies={TrendingmovieList} type={type}/>
+      <br />
+      <br />
+      <br />
+            
     </div>
+   
   )
 }
 
