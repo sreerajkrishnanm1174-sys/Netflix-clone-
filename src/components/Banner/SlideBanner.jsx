@@ -5,6 +5,7 @@ import { faArrowLeft,faArrowRight} from "@fortawesome/free-solid-svg-icons";
 import GenersGet from '../../api/GenersGet';
 
 function SlideBanner({ movies ,type}) {
+  const [selectedMovie, setSelectedMovie] = useState(null);
   const [index, setIndex] = useState(0);
   const [loadedImages, setLoadedImages] = useState({}); // cache loaded images
 
@@ -31,7 +32,7 @@ function SlideBanner({ movies ,type}) {
     if (!movies || movies.length === 0) return;
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % movies.length);
-    }, 4000);
+    }, 8000);
 
     return () => clearInterval(interval);
   }, [movies]);
@@ -52,9 +53,9 @@ function SlideBanner({ movies ,type}) {
 
   return (
     <div className="group relative ">
-      <Maindiv title={currentMovie.title ||  currentMovie.name ||'No Title'} src={src} className="h-[600px] " >
+      <Maindiv title={currentMovie.title ||  currentMovie.name ||'No Title'} src={src} className="h-[350px] sm:h-[420px] md:h-[500px] lg:h-[600px]" movie={currentMovie} type={type} >
       <GenersGet genre_ids={currentMovie.genre_ids} type={type}/>
-      <p className="text-sm">Rating: {currentMovie.vote_average}</p>
+      <p className="text-sm">Rating: {currentMovie.vote_average}</p>  
 
       <br />
       </Maindiv>

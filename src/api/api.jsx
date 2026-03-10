@@ -16,14 +16,14 @@ export const getGenerMovies = async (type) => {
     return response.data.genres;
 
   } catch (error) {
-    console.error("Error fetching genres", error);
+    // console.error("Error fetching genres", error);
   }
 };
 
 
 export const getTrendingMovies = async (type) => {
   try {
-    console.log(type)
+    // console.log(type)
     const response = await axios.get(
       `${BASE_URL}/trending/${type}/day?api_key=${API_KEY}`
     );
@@ -31,7 +31,7 @@ export const getTrendingMovies = async (type) => {
     return response.data.results;
     // console.log(response.data);     
   } catch (error) {
-    console.error("Error fetching movies", error);
+    // console.error("Error fetching movies", error);
   }
 };
 
@@ -43,7 +43,7 @@ export const getPopularMovies = async (type) => {
     
     return response.data.results;
   } catch (error) {
-    console.error(error);
+    // console.error(error);
   }
 };
 
@@ -52,14 +52,32 @@ export const getTopRatedMovies = async (type) => {
     const response = await axios.get(
       `https://api.themoviedb.org/3/${type}/top_rated?api_key=${API_KEY}` // ✅ correct endpoint
     );
-    console.log(response.data.results);
+    // console.log(response.data.results);
     return response.data.results;
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     return [];
   }
 };
 
+export const getPersonMovies = async (query) => {
+  try {
+
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&query=${query}`
+    );
+
+    const allKnownFor = response.data.results.flatMap(
+      (person) => person.known_for
+    );
+
+    return allKnownFor;
+
+  } catch (error) {
+    // console.error(error);
+    return [];
+  }
+};
 
 export const getMovieTrailer = async (Id,type) => {
   try {
@@ -74,7 +92,7 @@ export const getMovieTrailer = async (Id,type) => {
     return trailer ? trailer.key : null;
 
   } catch (error) {
-    console.error("Error fetching trailer", error);
+    // console.error("Error fetching trailer", error);
     return null;
   }
 };

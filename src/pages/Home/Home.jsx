@@ -37,28 +37,28 @@ function Home() {
 
   return (
     <>
-        <div className='flex '>
-            <Navbar/>
-            <div className='pl-20   w-[100%] '>
-              
-                <SlideBanner movies={TopRatedmovieList} type={type1}/>
-                <br />
-                 <h1 className='text-white text-4xl'>
-                    Top 10
-                </h1>
-                <br />
-                <MovieGallery movies={PopularmovieList} type={type1} />
-                <br />
-                 <h1 className='text-white text-4xl'>
-                    Tv series
-                </h1>
-                <br />
-                <MovieGallery movies={TrendingmovieList} type={type2}/>
-                <br />
-               
-               
-            </div>
-        </div>
+        
+      <div className='w-[100%] h-fit'>
+        
+          <SlideBanner movies={TopRatedmovieList} type={type1}/>
+          <br />
+            <h1 className='text-white text-4xl'>
+              Top 10
+          </h1>
+          <br />
+          <MovieGallery movies={PopularmovieList} type={type1} />
+          <br />
+            <h1 className='text-white text-4xl'>
+              Tv series
+          </h1>
+          <br />
+          <MovieGallery movies={TrendingmovieList} type={type2}/>
+          <br />
+          <br />
+          
+          
+      </div>
+  
     </>
    
   )
