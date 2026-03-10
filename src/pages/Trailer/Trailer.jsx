@@ -1,46 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { getMovieTrailer } from '../../api/api';
 
-function Trailer({ movie,type,onClose }) {
-    const [trailerKey, setTrailerKey] = useState(null);
-
-    useEffect   (() => {
-
-        const fetchTrailer = async () => {
-        const key = await getMovieTrailer(movie.id, type);
-        setTrailerKey(key);
-        };
-
-        fetchTrailer();
-
-    }, [movie, type]);
-
-    if (!trailerKey) return null;
-
+function Trailer({ id }) {
   return (
-    <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
-      
-      {/* Modal container */}
-      <div className="relative w-[90%] md:w-[800px]">
+        <div className="px-10 pb-10">
 
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute -top-10 right-0 text-white text-2xl"
-        >
-          ✕
-        </button>
+            <h2 className="text-2xl font-semibold mb-6">Trailer</h2>
 
-        {/* Trailer */}
-        <iframe
-          className="w-full h-[450px] rounded-lg"
-          src={`https://www.youtube.com/embed/${trailerKey}`}   
-          title={`${movie.title || movie.name} trailer`}
-          allowFullScreen
-        />
-      </div>
+            <iframe
+                className="w-full h-[500px] rounded-lg"
+                src={`https://www.youtube.com/embed/${id}`}
+                allowFullScreen
+            />
 
-    </div>
+        </div>
+
+    
   );
 }
 export default Trailer;
