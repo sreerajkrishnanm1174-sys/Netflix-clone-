@@ -1,10 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NormalBtn from "../Buttons/NormalBtn";
 import Trailer from "../../pages/Trailer/Trailer";
+import Modal from "../modal/modal";
+import { getMovieTrailer } from "../../api/api";
 
 function Maindiv({ title, src, className, children ,movie,type}) {
   const [showTrailer, setShowTrailer] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [trailer, setTrailer] = useState(null);
+
+  useEffect(() => {
+    if (!selectedMovie) return;
+
+    const getTrailer = async () => {
+      const key = await getMovieTrailer(selectedMovie.id, type);
+      setTrailer(key);
+    };
+
+    getTrailer();
+  }, [selectedMovie, type]);
 
   return (
     <main className={`${className}`}>
@@ -36,12 +50,10 @@ function Maindiv({ title, src, className, children ,movie,type}) {
               Watch trailer
             </NormalBtn>
 
-            {showTrailer && selectedMovie && (
-              <Trailer
-                movie={selectedMovie}
-                type={type}
-                onClose={() => setShowTrailer(false)}
-              />
+            {showTrailer && trailer && (
+              <Modal onClose={() => setShowTrailer(false)}>
+                <Trailer id={trailer} />
+              </Modal>
             )}
           </div>
         </div>

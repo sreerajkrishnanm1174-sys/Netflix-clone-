@@ -16,8 +16,8 @@ function Navbar() {
         <Navlink to="/" icon={FaHome} />
         <Navlink to="/movie" icon={FaClapperboard }/>
         <Navlink to="/Tvseries" icon={FaTv }/>
-        <Navlink to="/home" icon={FaArrowTrendUp }/>
-        <Navlink to="/home" icon={FaShuffle  }/>
+        {/* <Navlink to="/home" icon={FaArrowTrendUp }/>
+        <Navlink to="/home" icon={FaShuffle  }/> */}
 
       </div>
     </nav>

@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { API_KEY, BASE_URL } from '../../api/api';
-import GenersGet from "../../api/GenersGet";
 import MovieCard from "../moviecard/MovieCard";
+import {  useNavigate } from "react-router-dom";
 
 function SearchBar() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -35,7 +37,6 @@ function SearchBar() {
       setLoading(false);
     }
   };
-  
   return (
     <div className="max-w p-10 mt-10">
       <form onSubmit={handleSearch} className="flex gap-2">
@@ -58,7 +59,7 @@ function SearchBar() {
 
       <div className=" mt-10  flex flex-wrap gap-2 justify-start w-full">
         {results.map((movie, index) => (
-            <MovieCard key ={movie.id} movie={movie} type={movie.media_type}/>
+            <MovieCard key ={movie.id} movie={movie} type={movie.media_type} onClick={() => navigate(`/moviedetail/${movie.media_type}/${movie.id}`)}/>
 
         ))}
         </div>

@@ -6,6 +6,7 @@ import Movies from "./pages/Movies/Movies";
 import TvSeries from "./pages/Tv series/TvSeries";
 import SearchBar from "./components/SearchBar/SearchBar";
 import MainLayout from "./layout/mainlayout/MainLayout";
+import DetailsPage from "./pages/detailspage/DetailsPage";
 
 function App() {
   return (
@@ -16,10 +17,11 @@ function App() {
           <Route path="/movie" element={<Movies/>} />
           <Route path="/Tvseries" element={<TvSeries/>} />
           <Route path="/search" element={<SearchBar/>} />
+          <Route path="/moviedetail/:type/:id" element={<DetailsPage />} />
         </Route>
         
        
-      </Routes>
+      </Routes> 
     </>
   );
 }
