@@ -36,13 +36,13 @@ function TvSeries() {
           
         <SlideBanner movies={TopRatedmovieList} type={type}/>
         <br />
-          <h1 className='text-white text-4xl'>
+          <h1 className='text-white text-4xl  ml-5'>
             Top 10
         </h1>
         <br />
         <MovieGallery movies={PopularmovieList} type={type} />
         <br />
-          <h1 className='text-white text-4xl'>
+          <h1 className='text-white text-4xl  ml-5'>
             Trending
         </h1>
         <br />

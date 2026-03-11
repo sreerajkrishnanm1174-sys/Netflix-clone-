@@ -12,7 +12,7 @@ function MovieGallery({movies,type}) {
   
   return (
     <>
-      <div className="flex items-center h-fit w-[100%] gap-4 group  relative">
+      <div className="flex  p-5 h-fit max-w-full group  relative container mx-auto">
 
           {/* Left Button */}
         

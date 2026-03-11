@@ -57,7 +57,10 @@ function SearchBar() {
 
       {loading && <p className="mt-4">Loading...</p>}
 
-      <div className=" mt-10  flex flex-wrap gap-2 justify-start w-full">
+      <div className="container mx-auto px-4 
+                flex flex-wrap items-center justify-center 
+                gap-2 sm:gap-4 md:gap-6 
+                max-w-screen-xl">
         {results.map((movie, index) => (
             <MovieCard key ={movie.id} movie={movie} type={movie.media_type} onClick={() => navigate(`/moviedetail/${movie.media_type}/${movie.id}`)}/>
 

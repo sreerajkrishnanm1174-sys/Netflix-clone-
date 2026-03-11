@@ -42,13 +42,13 @@ function Home() {
         
           <SlideBanner movies={TopRatedmovieList} type={type1}/>
           <br />
-            <h1 className='text-white text-4xl'>
+            <h1 className='text-white text-4xl ml-5'>
               Top 10
           </h1>
           <br />
           <MovieGallery movies={PopularmovieList} type={type1} />
           <br />
-            <h1 className='text-white text-4xl'>
+            <h1 className='text-white text-4xl  ml-5'>
               Tv series
           </h1>
           <br />

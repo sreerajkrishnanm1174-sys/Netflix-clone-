@@ -107,7 +107,7 @@ export default function DetailsPage() {
 
             {/* SIMILAR MOVIES */}
             <br />
-            <h2 className="text-2xl capitalize">Similar Movies</h2>
+            <h2 className="text-2xl capitalize">Similar</h2>
             <br />
             <MovieGallery movies={similar}  />
             {/* <SimilarCard similar={similar}/> */}
