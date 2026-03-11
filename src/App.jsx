@@ -17,11 +17,11 @@ function App() {
           <Route path="/movie" element={<Movies/>} />
           <Route path="/Tvseries" element={<TvSeries/>} />
           <Route path="/search" element={<SearchBar/>} />
-          <Route path="/moviedetail/:id" element={<DetailsPage />} />
+          <Route path="/moviedetail/:type/:id" element={<DetailsPage />} />
         </Route>
         
        
-      </Routes>
+      </Routes> 
     </>
   );
 }

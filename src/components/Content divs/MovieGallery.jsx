@@ -1,8 +1,6 @@
-import React,{ useRef, useState,useEffect} from 'react'
+import React,{ useRef, useState} from 'react'
 import { LeftBtn, RightBtn } from '../Buttons/leftrightbtn';
-import Trailer from '../../pages/Trailer/Trailer';
 import MovieCard from '../moviecard/MovieCard';
-import DetailsPage from '../../pages/detailspage/DetailsPage';
 import { useNavigate } from "react-router-dom";
 
 
@@ -26,7 +24,7 @@ function MovieGallery({movies,type}) {
           >
             {movies.map((movie, index) => (
             
-              <MovieCard key ={movie.id} movie={movie} onClick={() => navigate(`/moviedetail/${movie.id}`)} type={ movie.title ? "movie" : "tv"}/>
+              <MovieCard key ={movie.id} movie={movie} onClick={() => navigate(`/moviedetail/${movie.title ? "movie" : "tv"}/${movie.id}`)} type={ movie.title ? "movie" : "tv"}/>
               
             ))}
 

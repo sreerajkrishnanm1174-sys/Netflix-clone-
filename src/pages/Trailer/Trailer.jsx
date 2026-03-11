@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import { getMovieTrailer } from '../../api/api';
 
-function Trailer({ id }) {
+function Trailer({ id ,className }) {
+  if (!id) return null;
+
   return (
-        <div className="px-10 pb-10">
-
-            <h2 className="text-2xl font-semibold mb-6">Trailer</h2>
-
-            <iframe
-                className="w-full h-[500px] rounded-lg"
-                src={`https://www.youtube.com/embed/${id}`}
-                allowFullScreen
-            />
-
-        </div>
-
-    
+    <div className={`w-full aspect-video ${className}`}>
+      <iframe
+        className="w-full h-full rounded-lg"
+        src={`https://www.youtube.com/embed/${id}`}
+        title="Movie Trailer"
+        frameBorder="0"
+        allow="autoplay; encrypted-media"
+        allowFullScreen
+      />
+    </div>
   );
 }
+
 export default Trailer;
