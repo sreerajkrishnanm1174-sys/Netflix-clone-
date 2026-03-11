@@ -3,7 +3,7 @@ import NormalBtn from '../Buttons/NormalBtn'
 
 function MoviedetailsHero({movie,trailer}) {
   return (
-    <div className="relative min-h-[70vh] w-full overflow-hidden">
+    <div className="relative min-h-[70vh] w-full ">
   
       {/* Background */}
       <img

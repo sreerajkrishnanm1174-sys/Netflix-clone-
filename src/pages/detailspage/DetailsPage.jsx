@@ -55,7 +55,7 @@ export default function DetailsPage() {
 
 
     return (
-        <div className="text-white">
+        <div className="text-white overflow-hidden">
 
         {/* HERO SECTION */}
             <MoviedetailsHero movie={movie} trailer={trailer}/>
