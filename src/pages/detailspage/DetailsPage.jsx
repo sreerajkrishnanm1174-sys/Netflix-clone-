@@ -69,10 +69,11 @@ export default function DetailsPage() {
                 <p><span className="text-gray-400">Status:</span> {movie.status}</p>
                 
                 <p><span className="text-gray-400">Language:</span> {movie?.original_language
-    ? new Intl.DisplayNames(['en'], { type: 'language' }).of(movie.original_language)
-    : ""}</p>
-                <p><span className="text-gray-400">Budget:</span> ${movie.budget}</p>
-                <p><span className="text-gray-400">Revenue:</span> ${movie.revenue}</p>
+                ? new Intl.DisplayNames(['en'], { type: 'language' }).of(movie.original_language)
+                : ""}
+                </p>
+                <p><span className="text-gray-400">Budget:</span> {movie.budget ==0 ? "Not disclosed" : `$ ${movie.budget}` }</p>
+                <p><span className="text-gray-400">Revenue:</span> {movie.revenue ==0 ? "Not disclosed" : `$ ${movie.revenue}` }</p>
                 <p><span className="text-gray-400">Runtime:</span> {movie.runtime} min</p>
 
                 </div>

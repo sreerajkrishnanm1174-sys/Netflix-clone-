@@ -10,7 +10,7 @@ function ActorsCard({cast}) {
             {cast?.map((actor) => (
             <div
                 key={actor.id}
-                className="min-w-[140px] text-center flex-shrink-0"
+                className="w-[140px] text-center flex-shrink-0"
             >
 
                 <img
@@ -27,7 +27,7 @@ function ActorsCard({cast}) {
                 {actor.name}
                 </p>
 
-                <p className="text-xs text-gray-400">
+                <p className="text-xs text-gray-400 ">
                 {actor.character}
                 </p>
 
