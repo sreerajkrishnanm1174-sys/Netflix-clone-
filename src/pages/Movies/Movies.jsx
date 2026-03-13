@@ -1,59 +1,53 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react'
-import SlideBanner from '../../components/Banner/SlideBanner';
-import MovieGallery from '../../components/Content divs/MovieGallery';
-import Navbar from '../../components/Navbar/Navbar';
-import { getPopularMovies, getTopRatedMovies, getTrendingMovies } from '../../api/api';
+import React, { useEffect } from "react";
+import { useState } from "react";
+import SlideBanner from "../../components/Banner/SlideBanner";
+import MovieGallery from "../../components/Content divs/MovieGallery";
+import Navbar from "../../components/Navbar/Navbar";
+import {
+  getPopularMovies,
+  getTopRatedMovies,
+  getTrendingMovies,
+} from "../../api/api";
+import Containerdiv from "../../components/Content divs/Containerdiv";
 
 function Movies() {
   const [TrendingmovieList, setTrendingMovieList] = useState([]);
   const [PopularmovieList, setPopularMovieList] = useState([]);
   const [TopRatedmovieList, setTopRatedMovieList] = useState([]);
-  const type="movie"
-  
-    useEffect(() => {
-    
-        const fetchMovies = async () => {
-          
-          const trendingData = await getTrendingMovies(type);
-          const popularData = (await getPopularMovies(type)).slice(0, 10);
-          const topRatedData = await getTopRatedMovies(type);
-          
-          
-    
-          setTrendingMovieList(trendingData);
-          setPopularMovieList(popularData);
-          setTopRatedMovieList(topRatedData);
-        };
-    
-        fetchMovies();
-    
-      }, []);
-    
+  const type = "movie";
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      const trendingData = await getTrendingMovies(type);
+      const popularData = (await getPopularMovies(type)).slice(0, 10);
+      const topRatedData = await getTopRatedMovies(type);
+
+      setTrendingMovieList(trendingData);
+      setPopularMovieList(popularData);
+      setTopRatedMovieList(topRatedData);
+    };
+
+    fetchMovies();
+  }, []);
+
   return (
- 
-    <div className='w-[100%] '>
-          
-      <SlideBanner movies={TopRatedmovieList} type={type}/>
+    <div className="w-[100%] ">
+      <SlideBanner movies={TopRatedmovieList} type={type} />
       <br />
-        <h1 className='text-white text-4xl  ml-5'>
-          Top 10
-      </h1>
-      <br />
-      <MovieGallery movies={PopularmovieList} type={type} />
-      <br />
-        <h1 className='text-white text-4xl  ml-5'>
-          Trending
-      </h1>
-      <br />
-      <MovieGallery movies={TrendingmovieList} type={type}/>
+      <Containerdiv>
+        <h1 className="text-white text-4xl  ml-5">Top 10</h1>
+        <br />
+        <MovieGallery movies={PopularmovieList} type={type} />
+        <br />
+        <h1 className="text-white text-4xl  ml-5">Trending</h1>
+        <br />
+        <MovieGallery movies={TrendingmovieList} type={type} />
+      </Containerdiv>
       <br />
       <br />
       <br />
-            
     </div>
-   
-  )
+  );
 }
 
-export default Movies
+export default Movies;
