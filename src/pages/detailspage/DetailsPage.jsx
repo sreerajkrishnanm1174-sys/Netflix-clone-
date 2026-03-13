@@ -7,6 +7,7 @@ import ActorsCard from "../../components/moviecard/ActorsCard";
 import MovieGallery from "../../components/Content divs/MovieGallery";
 import NormalBtn from "../../components/Buttons/NormalBtn";
 import MoviedetailsHero from "../../components/herosection/MoviedetailsHero";
+import Paginationdiv from "../../components/Content divs/Paginationdiv";
 
 
 
@@ -16,6 +17,8 @@ export default function DetailsPage() {
     const [cast, setCast] = useState([]);
     const [similar, setSimilar] = useState([]);
     const [trailer, setTrailer] = useState(null);
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(10);
     useEffect(() => {
     const getTrailer = async () => {
         const key = await getMovieTrailer(id, type);
@@ -29,7 +32,7 @@ export default function DetailsPage() {
         fetchMovie();
         fetchCast();
         fetchSimilar();
-    }, [id]);
+    }, [id,page]);
 
     const fetchMovie = async () => {
         const res = await axios.get(
@@ -47,11 +50,12 @@ export default function DetailsPage() {
 
     const fetchSimilar = async () => {
         const res = await axios.get(
-        `${BASE_URL}/${type}/${id}/similar?api_key=${API_KEY}`
+            `${BASE_URL}/${type}/${id}/similar?api_key=${API_KEY}&page=${page}`
         );
-        setSimilar(res.data.results.slice(0, 10));
-    };
 
+        setSimilar(res.data.results.slice(0, 7));
+        // setTotalPages(res.data.total_pages);
+    };
 
 
     return (
@@ -107,9 +111,19 @@ export default function DetailsPage() {
 
             {/* SIMILAR MOVIES */}
             <br />
-            <h2 className="text-2xl capitalize">Similar</h2>
+            <h2 className="pl-10 text-2xl capitalize">Similar</h2>
             <br />
-            <MovieGallery movies={similar}  />
+            <MovieGallery movies={similar} showButtons = {false}  />
+            <Paginationdiv page={page} 
+                setPage={setPage} 
+                totalPages={totalPages}
+            />
+            <br />
+            <br />
+            <br />
+            
+            
+
             {/* <SimilarCard similar={similar}/> */}
     
 
