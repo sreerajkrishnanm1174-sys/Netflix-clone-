@@ -76,8 +76,8 @@ export default function DetailsPage() {
                 ? new Intl.DisplayNames(['en'], { type: 'language' }).of(movie.original_language)
                 : ""}
                 </p>
-                <p><span className="text-gray-400">Budget:</span> {movie.budget ==0 ? "Not disclosed" : `$ ${movie.budget}` }</p>
-                <p><span className="text-gray-400">Revenue:</span> {movie.revenue ==0 ? "Not disclosed" : `$ ${movie.revenue}` }</p>
+                <p><span className="text-gray-400">Budget:</span> {!movie?.budget? "Not disclosed" : `$ ${movie.budget}` }</p>
+                <p><span className="text-gray-400">Revenue:</span> {!movie?.revenue ? "Not disclosed" : `$ ${movie.revenue}`}</p>
                 <p><span className="text-gray-400">Runtime:</span> {movie.runtime} min</p>
 
                 </div>
