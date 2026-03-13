@@ -1,45 +1,42 @@
-import React,{ useRef, useState} from 'react'
-import { LeftBtn, RightBtn } from '../Buttons/leftrightbtn';
-import MovieCard from '../moviecard/MovieCard';
+import React, { useRef, useState } from "react";
+import { LeftBtn, RightBtn } from "../Buttons/leftrightbtn";
+import MovieCard from "../moviecard/MovieCard";
 import { useNavigate } from "react-router-dom";
 
-
-function MovieGallery({movies,type}) {
+function MovieGallery({ movies, type, showButtons = true }) {
 
   const scrollRef = useRef(null);
   const navigate = useNavigate();
   const [selectedMovie, setSelectedMovie] = useState(null);
-  
+
   return (
-    <>
-      <div className="flex  p-5 h-fit max-w-full group  relative container mx-auto">
+    <div className="flex p-5 h-fit max-w-full group relative container mx-auto">
 
-          {/* Left Button */}
-        
-          <LeftBtn scrollRef={scrollRef} />
-          {/* Scroll Container */}
-          <div
-            ref={scrollRef}
-            className="flex overflow-x-auto gap-3 w-full scroll-smooth  no-scrollbar"
-          >
-            {movies.map((movie, index) => (
-            
-              <MovieCard key ={movie.id} movie={movie} onClick={() => navigate(`/moviedetail/${movie.title ? "movie" : "tv"}/${movie.id}`)} type={ movie.title ? "movie" : "tv"}/>
-              
-            ))}
+      {/* Left Button */}
+      {showButtons && <LeftBtn scrollRef={scrollRef} />}
 
-          
-          </div>
-
-          {/* Right Button */}
-          <RightBtn scrollRef={scrollRef} />
-
+      {/* Scroll Container */}
+      <div
+        ref={scrollRef}
+        className="flex overflow-x-auto gap-3 w-full scroll-smooth no-scrollbar"
+      >
+        {movies.map((movie) => (
+          <MovieCard
+            key={movie.id}
+            movie={movie}
+            onClick={() =>
+              navigate(`/moviedetail/${movie.title ? "movie" : "tv"}/${movie.id}`)
+            }
+            type={movie.title ? "movie" : "tv"}
+          />
+        ))}
       </div>
-    
-    </>
-    
 
+      {/* Right Button */}
+      {showButtons && <RightBtn scrollRef={scrollRef} />}
+
+    </div>
   );
 }
 
-export default MovieGallery
+export default MovieGallery;
