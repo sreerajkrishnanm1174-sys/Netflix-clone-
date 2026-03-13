@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 
-function Trailer({ id ,className }) {
+function Trailer({ id, className }) {
   if (!id) return null;
 
   return (
